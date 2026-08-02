@@ -1,4 +1,4 @@
-// Exercise 1:
+// EXERCISE 1:
 const { create } = require("node:domain");
 
 function createCharacters(name, level, health) {
@@ -27,9 +27,9 @@ const charactersPowerUp = characters.map(({ name, level, health }) => (
 
 const possibleWinners = charactersPowerUp.filter(characters => characters.health > 1000);
 
-console.log(possibleWinners);
+console.log('EXERCISE 1: List of possible winners: ', '\n', possibleWinners, '\n');
 
-// Exercise 2:
+// EXERCISE 2:
 function createPlayers(name, score) {
     return {
         name: name,
@@ -38,16 +38,27 @@ function createPlayers(name, score) {
 };
 
 const players = [
-    createPlayers('Nhan', 100), //a
-    createPlayers('Mihu', 50), //b
-    createPlayers('Thao', 80)
+    createPlayers('Mario', 1000),
+    createPlayers('Luigi', 900),
+    createPlayers('Peach', 850),
+    createPlayers('Yoshi', 800),
+    createPlayers('Nhan', 500)
 ];
 
 const sortPlayers = players.sort((a, b) => b.score - a.score);
+const leaderboard = sortPlayers.map(({ name, score }) => (
+    {
+        name: name,
+        score: score
+    }
+)
+);
 
 function printLeaderboard() {
-    console.log(sortPlayers);
-}
+    console.log('EXERCISE 2: The leaderboard is:');
+    for (let i = 0; i < leaderboard.length; i++) {
+        console.log((i + 1) + '. ' + leaderboard[i].name + ' - ' + leaderboard[i].score + ' pts');
+    }
+};
 
 printLeaderboard();
-
